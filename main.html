@@ -1,0 +1,275 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>Trosique</title>
+<style type="text/css">
+
+* {
+	font-family:Arial;
+	font-size:1em;
+}
+
+p, a, input {
+ 	background-color:#7892c2;
+ 	color:#ffffff;
+	-moz-border-radius:1em;
+	-webkit-border-radius:1em;
+	border-radius:1em;
+	border:1px solid #4e6096;
+	-moz-box-shadow: 0px 0px 0px 2px #9fb4f2;
+	-webkit-box-shadow: 0px 0px 0px 2px #9fb4f2;
+	box-shadow: 0px 0px 0px 2px #9fb4f2;
+	text-shadow:1px 1px 0px #283966;
+	clear:both;
+	text-align:right;
+	padding:0.2em 0.7em;
+	width: 4em;
+}
+
+p, div {
+	padding:0.2em 0.7em;
+	margin: 0.4em;
+ 	width: 18em;
+	padding-right:0px;
+}
+
+div, a {
+	text-align:center;
+}
+
+p label {
+	float:left;
+	margin-top: 0.4em;
+}
+
+input[type='number'] {
+ 	background-color:white;
+ 	color:black;
+ 	text-shadow:1px 1px 0px #9fb4f2;
+}
+
+input[type='button'] {
+	width: 6em;
+	height: 3em;
+	margin:1em;
+	text-align:center;
+}
+
+a {
+	margin:0.1em 0.3em;
+	display: inline-block;
+	width:0.6em;
+}
+
+.bubblingG {
+	text-align: center;
+	width:18em;
+	height:2em;
+	margin-top:10em;
+}
+
+.bubblingG span {
+	display: inline-block;
+	vertical-align: middle;
+	width: 10px;
+	height: 10px;
+	margin: 24px auto;
+	background: rgb(0,0,0);
+	border-radius: 49px;
+		-o-border-radius: 49px;
+		-ms-border-radius: 49px;
+		-webkit-border-radius: 49px;
+		-moz-border-radius: 49px;
+	animation: bubblingG 1.5s infinite alternate;
+		-o-animation: bubblingG 1.5s infinite alternate;
+		-ms-animation: bubblingG 1.5s infinite alternate;
+		-webkit-animation: bubblingG 1.5s infinite alternate;
+		-moz-animation: bubblingG 1.5s infinite alternate;
+}
+
+#bubblingG_1 {
+	animation-delay: 0s;
+		-o-animation-delay: 0s;
+		-ms-animation-delay: 0s;
+		-webkit-animation-delay: 0s;
+		-moz-animation-delay: 0s;
+}
+
+#bubblingG_2 {
+	animation-delay: 0.45s;
+		-o-animation-delay: 0.45s;
+		-ms-animation-delay: 0.45s;
+		-webkit-animation-delay: 0.45s;
+		-moz-animation-delay: 0.45s;
+}
+
+#bubblingG_3 {
+	animation-delay: 0.9s;
+		-o-animation-delay: 0.9s;
+		-ms-animation-delay: 0.9s;
+		-webkit-animation-delay: 0.9s;
+		-moz-animation-delay: 0.9s;
+}
+
+
+
+@keyframes bubblingG {
+	0% {
+		width: 10px;
+		height: 10px;
+		background-color:rgb(0,0,0);
+		transform: translateY(0);
+	}
+
+	100% {
+		width: 23px;
+		height: 23px;
+		background-color:rgb(255,255,255);
+		transform: translateY(-20px);
+	}
+}
+
+@-o-keyframes bubblingG {
+	0% {
+		width: 10px;
+		height: 10px;
+		background-color:rgb(0,0,0);
+		-o-transform: translateY(0);
+	}
+
+	100% {
+		width: 23px;
+		height: 23px;
+		background-color:rgb(255,255,255);
+		-o-transform: translateY(-20px);
+	}
+}
+
+@-ms-keyframes bubblingG {
+	0% {
+		width: 10px;
+		height: 10px;
+		background-color:rgb(0,0,0);
+		-ms-transform: translateY(0);
+	}
+
+	100% {
+		width: 23px;
+		height: 23px;
+		background-color:rgb(255,255,255);
+		-ms-transform: translateY(-20px);
+	}
+}
+
+@-webkit-keyframes bubblingG {
+	0% {
+		width: 10px;
+		height: 10px;
+		background-color:rgb(0,0,0);
+		-webkit-transform: translateY(0);
+	}
+
+	100% {
+		width: 23px;
+		height: 23px;
+		background-color:rgb(255,255,255);
+		-webkit-transform: translateY(-20px);
+	}
+}
+
+@-moz-keyframes bubblingG {
+	0% {
+		width: 10px;
+		height: 10px;
+		background-color:rgb(0,0,0);
+		-moz-transform: translateY(0);
+	}
+
+	100% {
+		width: 23px;
+		height: 23px;
+		background-color:rgb(255,255,255);
+		-moz-transform: translateY(-20px);
+	}
+}
+
+#overlay {
+  background-color: #000;
+  height: 100%;
+  left: 0;
+  opacity: 0.50;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+</style>
+<script type="text/javascript">
+
+function send(params) {
+	document.getElementById("overlay").hidden=false
+	var x = new XMLHttpRequest();
+	x.open('GET', params, true);
+	x.onload = function (e) {
+		document.getElementById("overlay").hidden=true
+	};
+	x.send(null);
+}
+
+function start() {
+	var arr = [];
+	arr.push('delay=' + document.main.delay.value);
+	arr.push('exp=' + document.main.exp.value);
+	arr.push('count=' + document.main.count.value);
+	
+	send('/start?' + arr.join('&'));
+}
+
+function dec(a) {
+	var x = a.nextSibling
+	if (!x.min || x.value > x.min)
+		x.value = Number(x.value) - 1;
+}
+
+function inc(a) {
+	var x = a.previousSibling
+	if (!x.max || x.value < x.max)
+		x.value = Number(x.value) + 1;
+}
+</script>
+</head>
+<body>
+<form name="main">
+	<p><label>Выдержка, с:</label><span>
+		<a onclick="dec(this);">-</a><input type="number" onClick="this.select();" name="exp" value="0" min="0" max="600"><a onclick="inc(this);">+</a>
+	</span></p>
+	<p><label>Задержка, с:</label><span>
+		<a onclick="dec(this);">-</a><input type="number" onClick="this.select();" name="delay" value="0" min="0" max="600"><a onclick="inc(this);">+</a>
+	</span></p>
+	<p id="count_block"><label>Кол-во кадров:</label><span>
+		<a onclick="dec(this);">-</a><input type="number" onClick="this.select();" name="count" value="1" min="1"><a onclick="inc(this);">+</a>
+	</span></p><br/>
+	<div>
+		<input id="focus_id" type="button" value="Фокус" onclick="send('/focus')">
+		<input id="start_id"  type="button" value="Старт" onclick="start()">
+	</div>
+	
+</form>
+
+
+<div id="overlay" hidden>
+	<div class="bubblingG">
+		<span id="bubblingG_1">
+		</span>
+		<span id="bubblingG_2">
+		</span>
+		<span id="bubblingG_3">
+		</span>
+	</div>
+</div>
+
+
+</body>
+</html> 
+
